@@ -4,38 +4,12 @@ on:
   push:
     - workflows: demo-service-connection-workflow
 
-tokens:
-  SERVICE_CONNECTION:
-    service_connection: default-service-connection
-    scope: org
 
 workflows:
   demo-service-connection-workflow:
     tasks:
       - name: demo-task
         cubes:
-          # Return IAM-token through outputs.IAM_TOKEN
-          - name: get-iam-token
-            env:
-              ID_TOKEN: ${{ tokens.SERVICE_CONNECTION.id_token }}
-              YC_SA_ID: ${{ tokens.SERVICE_CONNECTION.service_account_id }}
-            image: cr.yandex/sourcecraft/yc-iam:latest
-          
-          - name: get-lockbox-cube-test
-            env:
-              YC_IAM_TOKEN: ${{ cubes.get-iam-token.outputs.IAM_TOKEN }}
-              YC_LOCK_BOX_SECRET_ID: e6q1idnlpfgmarm6cpnp
-            image: cr.yandex/sourcecraft-cube/yc-lockbox:latest
-          
-          - name: get-lock-box-secret
-            env: 
-              YC_IAM_TOKEN: ${{ cubes.get-iam-token.outputs.IAM_TOKEN }}
-              YC_LOCK_BOX_SECRET_ID: e6q1idnlpfgmarm6cpnp
-              DATA: ${{ cubes.get-lockbox-cube-test.outputs.SECRET_DATA }}
-            script:
-              - |
-                echo "$DATA"
-          
           - name: gh-action-test-from-sourcecraft
             action: https://sourcecraft.dev/mikhail-bondarevsky/gh-action-test@main
 
