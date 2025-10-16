@@ -1,9 +1,13 @@
 {
-  "name": "create-new-github-action-that-logs-hello-world-javascript-nodejs",
+  "name": "create-new-github-action",
   "version": "1.0.0",
-  "description": "Egghead - Create a New Github Action with Javascript",
-  "author": "Colby Fayock <hello@colbyfayock.com>",
+  "description": "Create a New Github Action with Javascript",
+  "author": "mikhail bondarevsky",
   "main": "index.js",
+  "dependencies": {
+    "@actions/core": "^1.2.7",
+    "@actions/github": "^5.0.1"
+  }
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
