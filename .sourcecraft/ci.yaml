@@ -10,10 +10,10 @@ workflows:
     tasks:
       - name: demo-task
         cubes:
-          - name: gh-action-test-from-sourcecraft
-            action: https://sourcecraft.dev/mikhail-bondarevsky/gh-action-test@main
-
           - name: gh-action-test-from-github
             action: BondarevskyYC/gh-action-test@main
+
+          #- name: gh-action-test-from-sourcecraft
+          #  action: https://sourcecraft.dev/mikhail-bondarevsky/gh-action-test@main
           
             
